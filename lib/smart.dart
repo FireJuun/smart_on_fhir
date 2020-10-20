@@ -165,11 +165,10 @@ abstract class Smart implements _$Smart {
 }
 
 Future smarter() async {
-  const thisUrl =
-      'https://launch.smarthealthit.org/v/r4/sim/eyJoIjoiMSIsImoiOiIxIn0/fhir';
+  const thisUrl = 'https://dbhifhir.aidbox.app/fhir/metadata';
   final smart = Smart(
     baseUrl: FhirUri(thisUrl),
-    clientId: 'my_web_app',
+    clientId: 'web-app',
     redirectUri: FhirUri('com.example.fhir_at_rest:/'),
     scope: [
       Scope.clinicalR4(
