@@ -16,7 +16,7 @@ Future<Either<SmartFailure, Map<String, dynamic>>> makeRequest({
   Response result;
 
   // for testing purposes
-  return left(SmartFailure.searchStringTest(searchString: thisRequest));
+  // return left(SmartFailure.searchStringTest(searchString: thisRequest));
 
   try {
     switch (type) {
