@@ -13,43 +13,58 @@ import 'failures/smart_failure.dart';
 import 'request/capabilities_request.dart';
 import 'scopes/scopes.dart';
 
-part 'smart.freezed.dart';
-
 /// the star of our show, who you've all come to see, the Smart object who
 /// will provide the client for interacting with the FHIR server
-@freezed
-abstract class Smart implements _$Smart {
-  Smart._();
-  factory Smart({
-    /// specify which FHIR version you're working with, defaults to R4
-    @Default(FhirV.r4) FhirV version,
+class Smart {
+  Smart({
+    this.version = FhirV.r4,
+    @required this.baseUrl,
+    @required this.clientId,
+    @required this.redirectUri,
+    this.launch,
+    this.scopes,
+    @required this.fhirServer,
+    this.additionalParameters,
+    this.authorize,
+    this.token,
+  });
 
-    /// specify the baseUrl of the Capability Statement (or conformance
-    /// statement for Dstu2). Note this may not be the same as the authentication
-    /// server or the FHIR data server
-    @required FhirUri baseUrl,
+  /// specify which FHIR version you're working with, defaults to R4
+  FhirV version;
 
-    /// the clientId of your app, must be pre-registered with the authorization
-    /// server
-    @required String clientId,
+  /// specify the baseUrl of the Capability Statement (or conformance
+  /// statement for Dstu2). Note this may not be the same as the authentication
+  /// server or the FHIR data server
+  FhirUri baseUrl;
 
-    /// the redurectUri of your app, must be pre-registered with the authorization
-    /// server, need to follow the instructions from flutter_appauth
-    /// https://pub.dev/packages/flutter_appauth
-    /// about editing files for Android and iOS
-    @required FhirUri redirectUri,
+  /// the clientId of your app, must be pre-registered with the authorization
+  /// server
+  String clientId;
 
-    /// if there are certain launch strings that need to be included
-    String launch,
+  /// the redurectUri of your app, must be pre-registered with the authorization
+  /// server, need to follow the instructions from flutter_appauth
+  /// https://pub.dev/packages/flutter_appauth
+  /// about editing files for Android and iOS
+  FhirUri redirectUri;
 
-    /// the scopes that will be included with the request
-    Scopes scopes,
+  /// if there are certain launch strings that need to be included
+  String launch;
 
-    /// this is the name of the FHIR data server where you will eventually
-    /// be reuesting actual data after authorization
-    @required FhirUri fhirServer,
-    Map<String, String> additionalParameters,
-  }) = _Smart;
+  /// the scopes that will be included with the request
+  Scopes scopes;
+
+  /// this is the name of the FHIR data server where you will eventually
+  /// be reuesting actual data after authorization
+  FhirUri fhirServer;
+
+  /// any additional parameters you'd like to pass as part of this request
+  Map<String, String> additionalParameters;
+
+  /// the authorize Url from the Conformance/Capability Statement
+  FhirUri authorize;
+
+  /// the token Url from the Conformance/Capability Statement
+  FhirUri token;
 
   /// the function when you're ready to request access, be sure to pass in the
   /// the client secret when you make a request if you're creating a confidential
@@ -60,12 +75,6 @@ abstract class Smart implements _$Smart {
     /// because each version of FHIR will return a different type of Conformance
     /// or Capability Statement
     dynamic conformanceStatement;
-
-    /// the token endpoint found from the above statement
-    FhirUri token;
-
-    /// the authorize endpoint found from the above statement
-    FhirUri authorize;
     switch (version) {
       case FhirV.dstu2:
         {
@@ -98,7 +107,6 @@ abstract class Smart implements _$Smart {
             token = _getUri(r as r4.CapabilityStatement, 'token');
             authorize = _getUri(r as r4.CapabilityStatement, 'authorize');
           });
-          print(conformanceStatement);
         }
         break;
       case FhirV.r5:
