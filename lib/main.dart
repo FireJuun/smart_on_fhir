@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_on_fhir/smart.dart';
@@ -69,5 +71,25 @@ Future smarter() async {
     },
   );
 
-  await smart.client(secret: 'verysecret');
+  var auth = await smart.client(secret: 'verysecret');
+  final refresh = auth.fold((l) => null, (r) => r.refreshToken);
+  sleep(const Duration(seconds: 2));
+  final smart2 = Smart(
+    baseUrl: FhirUri(thisUrl),
+    clientId: 'web-app',
+    redirectUri: FhirUri('com.example.smartonfhir://'),
+    fhirServer: FhirUri(thisUrl),
+    token: smart.token,
+    authorize: smart.authorize,
+  );
+  if (refresh != null) {
+    auth = await smart2.refresh(secret: 'verysecret', refreshToken: refresh);
+  }
+  auth.fold(
+    (l) => print(l.errorMessage()),
+    (r) {
+      print(r.accessToken);
+      print(r.refreshToken);
+    },
+  );
 }

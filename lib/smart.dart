@@ -130,8 +130,8 @@ class Smart {
     }
 
     final appAuth = FlutterAppAuth();
-
     AuthorizationTokenResponse authorization;
+
     print('trying authorization');
     try {
       authorization = await appAuth.authorizeAndExchangeCode(
@@ -143,6 +143,32 @@ class Smart {
               authorize.toString(), token.toString()),
           scopes: scopes.scopesList(),
           additionalParameters: additionalParameters,
+        ),
+      );
+    } catch (e) {
+      return left(SmartFailure.unknownFailure(failedValue: e));
+    }
+    return right(authorization);
+  }
+
+  Future<Either<SmartFailure, AuthorizationTokenResponse>> refresh({
+    String secret,
+    String refreshToken,
+  }) async {
+    final appAuth = FlutterAppAuth();
+    TokenResponse authorization;
+    print('refreshing authorization');
+    try {
+      authorization = await appAuth.token(
+        TokenRequest(
+          clientId,
+          redirectUri.toString(),
+          clientSecret: secret,
+          issuer: token.toString(),
+          serviceConfiguration: AuthorizationServiceConfiguration(
+              authorize.toString(), token.toString()),
+          refreshToken: refreshToken,
+          grantType: 'refresh_token',
         ),
       );
     } catch (e) {
