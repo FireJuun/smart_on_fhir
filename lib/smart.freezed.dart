@@ -20,7 +20,7 @@ class _$SmartTearOff {
       @required String clientId,
       @required FhirUri redirectUri,
       String launch,
-      List<Scope> scope,
+      Scope scope,
       @required FhirUri fhirServer,
       Map<String, String> additionalParameters}) {
     return _Smart(
@@ -47,7 +47,7 @@ mixin _$Smart {
   String get clientId;
   FhirUri get redirectUri;
   String get launch;
-  List<Scope> get scope;
+  Scope get scope;
   FhirUri get fhirServer;
   Map<String, String> get additionalParameters;
 
@@ -64,9 +64,11 @@ abstract class $SmartCopyWith<$Res> {
       String clientId,
       FhirUri redirectUri,
       String launch,
-      List<Scope> scope,
+      Scope scope,
       FhirUri fhirServer,
       Map<String, String> additionalParameters});
+
+  $ScopeCopyWith<$Res> get scope;
 }
 
 /// @nodoc
@@ -95,13 +97,23 @@ class _$SmartCopyWithImpl<$Res> implements $SmartCopyWith<$Res> {
       redirectUri:
           redirectUri == freezed ? _value.redirectUri : redirectUri as FhirUri,
       launch: launch == freezed ? _value.launch : launch as String,
-      scope: scope == freezed ? _value.scope : scope as List<Scope>,
+      scope: scope == freezed ? _value.scope : scope as Scope,
       fhirServer:
           fhirServer == freezed ? _value.fhirServer : fhirServer as FhirUri,
       additionalParameters: additionalParameters == freezed
           ? _value.additionalParameters
           : additionalParameters as Map<String, String>,
     ));
+  }
+
+  @override
+  $ScopeCopyWith<$Res> get scope {
+    if (_value.scope == null) {
+      return null;
+    }
+    return $ScopeCopyWith<$Res>(_value.scope, (value) {
+      return _then(_value.copyWith(scope: value));
+    });
   }
 }
 
@@ -116,9 +128,12 @@ abstract class _$SmartCopyWith<$Res> implements $SmartCopyWith<$Res> {
       String clientId,
       FhirUri redirectUri,
       String launch,
-      List<Scope> scope,
+      Scope scope,
       FhirUri fhirServer,
       Map<String, String> additionalParameters});
+
+  @override
+  $ScopeCopyWith<$Res> get scope;
 }
 
 /// @nodoc
@@ -148,7 +163,7 @@ class __$SmartCopyWithImpl<$Res> extends _$SmartCopyWithImpl<$Res>
       redirectUri:
           redirectUri == freezed ? _value.redirectUri : redirectUri as FhirUri,
       launch: launch == freezed ? _value.launch : launch as String,
-      scope: scope == freezed ? _value.scope : scope as List<Scope>,
+      scope: scope == freezed ? _value.scope : scope as Scope,
       fhirServer:
           fhirServer == freezed ? _value.fhirServer : fhirServer as FhirUri,
       additionalParameters: additionalParameters == freezed
@@ -188,7 +203,7 @@ class _$_Smart extends _Smart {
   @override
   final String launch;
   @override
-  final List<Scope> scope;
+  final Scope scope;
   @override
   final FhirUri fhirServer;
   @override
@@ -252,7 +267,7 @@ abstract class _Smart extends Smart {
       @required String clientId,
       @required FhirUri redirectUri,
       String launch,
-      List<Scope> scope,
+      Scope scope,
       @required FhirUri fhirServer,
       Map<String, String> additionalParameters}) = _$_Smart;
 
@@ -267,7 +282,7 @@ abstract class _Smart extends Smart {
   @override
   String get launch;
   @override
-  List<Scope> get scope;
+  Scope get scope;
   @override
   FhirUri get fhirServer;
   @override

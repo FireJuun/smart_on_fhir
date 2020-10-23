@@ -4,13 +4,13 @@ import '../enums/enums.dart';
 import '../resource_types/resource_types.dart';
 
 part 'clinical_scope.dart';
-part 'scope_refactor.freezed.dart';
+part 'scope.freezed.dart';
 
 @freezed
-abstract class ScopeRefactor implements _$ScopeRefactor {
-  ScopeRefactor._();
+abstract class Scope implements _$Scope {
+  Scope._();
 
-  factory ScopeRefactor({
+  factory Scope({
     List<ClinicalScope> clinicalScope,
     bool ehrLaunch,
     bool patientLaunch,
@@ -22,7 +22,7 @@ abstract class ScopeRefactor implements _$ScopeRefactor {
     bool offlineAccess,
     bool onlineAccess,
     List<String> additional,
-  }) = _ScopeRefactor;
+  }) = _Scope;
 
   List<String> scopesList() {
     List<String> returnValue = [];

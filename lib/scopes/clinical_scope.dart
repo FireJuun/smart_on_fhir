@@ -1,4 +1,4 @@
-part of 'scope_refactor.dart';
+part of 'scope.dart';
 
 @freezed
 abstract class ClinicalScope implements _$ClinicalScope {

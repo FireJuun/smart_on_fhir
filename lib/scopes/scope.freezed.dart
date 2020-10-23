@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'scope_refactor.dart';
+part of 'scope.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,11 +10,11 @@ part of 'scope_refactor.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$ScopeRefactorTearOff {
-  const _$ScopeRefactorTearOff();
+class _$ScopeTearOff {
+  const _$ScopeTearOff();
 
 // ignore: unused_element
-  _ScopeRefactor call(
+  _Scope call(
       {List<ClinicalScope> clinicalScope,
       bool ehrLaunch,
       bool patientLaunch,
@@ -26,7 +26,7 @@ class _$ScopeRefactorTearOff {
       bool offlineAccess,
       bool onlineAccess,
       List<String> additional}) {
-    return _ScopeRefactor(
+    return _Scope(
       clinicalScope: clinicalScope,
       ehrLaunch: ehrLaunch,
       patientLaunch: patientLaunch,
@@ -44,10 +44,10 @@ class _$ScopeRefactorTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $ScopeRefactor = _$ScopeRefactorTearOff();
+const $Scope = _$ScopeTearOff();
 
 /// @nodoc
-mixin _$ScopeRefactor {
+mixin _$Scope {
   List<ClinicalScope> get clinicalScope;
   bool get ehrLaunch;
   bool get patientLaunch;
@@ -60,14 +60,13 @@ mixin _$ScopeRefactor {
   bool get onlineAccess;
   List<String> get additional;
 
-  $ScopeRefactorCopyWith<ScopeRefactor> get copyWith;
+  $ScopeCopyWith<Scope> get copyWith;
 }
 
 /// @nodoc
-abstract class $ScopeRefactorCopyWith<$Res> {
-  factory $ScopeRefactorCopyWith(
-          ScopeRefactor value, $Res Function(ScopeRefactor) then) =
-      _$ScopeRefactorCopyWithImpl<$Res>;
+abstract class $ScopeCopyWith<$Res> {
+  factory $ScopeCopyWith(Scope value, $Res Function(Scope) then) =
+      _$ScopeCopyWithImpl<$Res>;
   $Res call(
       {List<ClinicalScope> clinicalScope,
       bool ehrLaunch,
@@ -83,13 +82,12 @@ abstract class $ScopeRefactorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScopeRefactorCopyWithImpl<$Res>
-    implements $ScopeRefactorCopyWith<$Res> {
-  _$ScopeRefactorCopyWithImpl(this._value, this._then);
+class _$ScopeCopyWithImpl<$Res> implements $ScopeCopyWith<$Res> {
+  _$ScopeCopyWithImpl(this._value, this._then);
 
-  final ScopeRefactor _value;
+  final Scope _value;
   // ignore: unused_field
-  final $Res Function(ScopeRefactor) _then;
+  final $Res Function(Scope) _then;
 
   @override
   $Res call({
@@ -135,11 +133,9 @@ class _$ScopeRefactorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ScopeRefactorCopyWith<$Res>
-    implements $ScopeRefactorCopyWith<$Res> {
-  factory _$ScopeRefactorCopyWith(
-          _ScopeRefactor value, $Res Function(_ScopeRefactor) then) =
-      __$ScopeRefactorCopyWithImpl<$Res>;
+abstract class _$ScopeCopyWith<$Res> implements $ScopeCopyWith<$Res> {
+  factory _$ScopeCopyWith(_Scope value, $Res Function(_Scope) then) =
+      __$ScopeCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<ClinicalScope> clinicalScope,
@@ -156,15 +152,13 @@ abstract class _$ScopeRefactorCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ScopeRefactorCopyWithImpl<$Res>
-    extends _$ScopeRefactorCopyWithImpl<$Res>
-    implements _$ScopeRefactorCopyWith<$Res> {
-  __$ScopeRefactorCopyWithImpl(
-      _ScopeRefactor _value, $Res Function(_ScopeRefactor) _then)
-      : super(_value, (v) => _then(v as _ScopeRefactor));
+class __$ScopeCopyWithImpl<$Res> extends _$ScopeCopyWithImpl<$Res>
+    implements _$ScopeCopyWith<$Res> {
+  __$ScopeCopyWithImpl(_Scope _value, $Res Function(_Scope) _then)
+      : super(_value, (v) => _then(v as _Scope));
 
   @override
-  _ScopeRefactor get _value => super._value as _ScopeRefactor;
+  _Scope get _value => super._value as _Scope;
 
   @override
   $Res call({
@@ -180,7 +174,7 @@ class __$ScopeRefactorCopyWithImpl<$Res>
     Object onlineAccess = freezed,
     Object additional = freezed,
   }) {
-    return _then(_ScopeRefactor(
+    return _then(_Scope(
       clinicalScope: clinicalScope == freezed
           ? _value.clinicalScope
           : clinicalScope as List<ClinicalScope>,
@@ -210,8 +204,8 @@ class __$ScopeRefactorCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_ScopeRefactor extends _ScopeRefactor {
-  _$_ScopeRefactor(
+class _$_Scope extends _Scope {
+  _$_Scope(
       {this.clinicalScope,
       this.ehrLaunch,
       this.patientLaunch,
@@ -250,13 +244,13 @@ class _$_ScopeRefactor extends _ScopeRefactor {
 
   @override
   String toString() {
-    return 'ScopeRefactor(clinicalScope: $clinicalScope, ehrLaunch: $ehrLaunch, patientLaunch: $patientLaunch, encounterLaunch: $encounterLaunch, needPatientBanner: $needPatientBanner, intent: $intent, openid: $openid, fhirUser: $fhirUser, offlineAccess: $offlineAccess, onlineAccess: $onlineAccess, additional: $additional)';
+    return 'Scope(clinicalScope: $clinicalScope, ehrLaunch: $ehrLaunch, patientLaunch: $patientLaunch, encounterLaunch: $encounterLaunch, needPatientBanner: $needPatientBanner, intent: $intent, openid: $openid, fhirUser: $fhirUser, offlineAccess: $offlineAccess, onlineAccess: $onlineAccess, additional: $additional)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ScopeRefactor &&
+        (other is _Scope &&
             (identical(other.clinicalScope, clinicalScope) ||
                 const DeepCollectionEquality()
                     .equals(other.clinicalScope, clinicalScope)) &&
@@ -306,13 +300,13 @@ class _$_ScopeRefactor extends _ScopeRefactor {
       const DeepCollectionEquality().hash(additional);
 
   @override
-  _$ScopeRefactorCopyWith<_ScopeRefactor> get copyWith =>
-      __$ScopeRefactorCopyWithImpl<_ScopeRefactor>(this, _$identity);
+  _$ScopeCopyWith<_Scope> get copyWith =>
+      __$ScopeCopyWithImpl<_Scope>(this, _$identity);
 }
 
-abstract class _ScopeRefactor extends ScopeRefactor {
-  _ScopeRefactor._() : super._();
-  factory _ScopeRefactor(
+abstract class _Scope extends Scope {
+  _Scope._() : super._();
+  factory _Scope(
       {List<ClinicalScope> clinicalScope,
       bool ehrLaunch,
       bool patientLaunch,
@@ -323,7 +317,7 @@ abstract class _ScopeRefactor extends ScopeRefactor {
       bool fhirUser,
       bool offlineAccess,
       bool onlineAccess,
-      List<String> additional}) = _$_ScopeRefactor;
+      List<String> additional}) = _$_Scope;
 
   @override
   List<ClinicalScope> get clinicalScope;
@@ -348,7 +342,7 @@ abstract class _ScopeRefactor extends ScopeRefactor {
   @override
   List<String> get additional;
   @override
-  _$ScopeRefactorCopyWith<_ScopeRefactor> get copyWith;
+  _$ScopeCopyWith<_Scope> get copyWith;
 }
 
 /// @nodoc

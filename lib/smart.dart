@@ -11,7 +11,7 @@ import 'package:fhir/r5.dart' as r5;
 import 'enums/enums.dart';
 import 'failures/smart_failure.dart';
 import 'request/capabilities_request.dart';
-import 'scope.dart';
+import 'scopes/scope.dart';
 
 part 'smart.freezed.dart';
 
@@ -24,7 +24,7 @@ abstract class Smart implements _$Smart {
     @required String clientId,
     @required FhirUri redirectUri,
     String launch,
-    List<Scope> scope,
+    Scope scope,
     @required FhirUri fhirServer,
     Map<String, String> additionalParameters,
   }) = _Smart;
@@ -99,7 +99,7 @@ abstract class Smart implements _$Smart {
           redirectUri.toString(),
           serviceConfiguration: AuthorizationServiceConfiguration(
               authorize.toString(), token.toString()),
-          scopes: _getScopes(),
+          scopes: scope.scopesList(),
           additionalParameters: additionalParameters,
         ),
       );
@@ -109,18 +109,6 @@ abstract class Smart implements _$Smart {
     print(authorization.accessToken);
 
     return right(unit);
-  }
-
-  List<String> _getScopes() {
-    var scopeList = <String>[];
-    for (var s in scope) {
-      if (s is AdditionalScopes) {
-        scopeList.addAll(s.additional);
-      } else {
-        scopeList.add(s.toString());
-      }
-    }
-    return scopeList;
   }
 
   FhirUri _getUri(dynamic capabilityStatement, String type) {
