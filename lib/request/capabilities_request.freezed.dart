@@ -76,9 +76,18 @@ const $CapabilitiesRequest = _$CapabilitiesRequestTearOff();
 
 /// @nodoc
 mixin _$CapabilitiesRequest {
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   Uri get base;
+
+  /// Mode can be full, normative, or terminology
   Mode get mode;
+
+  /// Do you want the return value to be pretty printed?
   bool get pretty;
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   Summary get summary;
 
   @optionalTypeArgs
@@ -200,15 +209,25 @@ class _$_CapabilitiesRequestDstu2 extends _CapabilitiesRequestDstu2 {
         super._();
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   final Uri base;
   @JsonKey(defaultValue: Mode.full)
   @override
+
+  /// Mode can be full, normative, or terminology
   final Mode mode;
   @JsonKey(defaultValue: false)
   @override
+
+  /// Do you want the return value to be pretty printed?
   final bool pretty;
   @JsonKey(defaultValue: Summary.none)
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   final Summary summary;
 
   @override
@@ -315,12 +334,22 @@ abstract class _CapabilitiesRequestDstu2 extends CapabilitiesRequest {
       Summary summary}) = _$_CapabilitiesRequestDstu2;
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   Uri get base;
   @override
+
+  /// Mode can be full, normative, or terminology
   Mode get mode;
   @override
+
+  /// Do you want the return value to be pretty printed?
   bool get pretty;
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   Summary get summary;
   @override
   _$CapabilitiesRequestDstu2CopyWith<_CapabilitiesRequestDstu2> get copyWith;
@@ -378,15 +407,25 @@ class _$_CapabilitiesRequestStu3 extends _CapabilitiesRequestStu3 {
         super._();
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   final Uri base;
   @JsonKey(defaultValue: Mode.full)
   @override
+
+  /// Mode can be full, normative, or terminology
   final Mode mode;
   @JsonKey(defaultValue: false)
   @override
+
+  /// Do you want the return value to be pretty printed?
   final bool pretty;
   @JsonKey(defaultValue: Summary.none)
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   final Summary summary;
 
   @override
@@ -493,12 +532,22 @@ abstract class _CapabilitiesRequestStu3 extends CapabilitiesRequest {
       Summary summary}) = _$_CapabilitiesRequestStu3;
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   Uri get base;
   @override
+
+  /// Mode can be full, normative, or terminology
   Mode get mode;
   @override
+
+  /// Do you want the return value to be pretty printed?
   bool get pretty;
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   Summary get summary;
   @override
   _$CapabilitiesRequestStu3CopyWith<_CapabilitiesRequestStu3> get copyWith;
@@ -555,15 +604,25 @@ class _$_CapabilitiesRequestR4 extends _CapabilitiesRequestR4 {
         super._();
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   final Uri base;
   @JsonKey(defaultValue: Mode.full)
   @override
+
+  /// Mode can be full, normative, or terminology
   final Mode mode;
   @JsonKey(defaultValue: false)
   @override
+
+  /// Do you want the return value to be pretty printed?
   final bool pretty;
   @JsonKey(defaultValue: Summary.none)
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   final Summary summary;
 
   @override
@@ -670,12 +729,22 @@ abstract class _CapabilitiesRequestR4 extends CapabilitiesRequest {
       Summary summary}) = _$_CapabilitiesRequestR4;
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   Uri get base;
   @override
+
+  /// Mode can be full, normative, or terminology
   Mode get mode;
   @override
+
+  /// Do you want the return value to be pretty printed?
   bool get pretty;
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   Summary get summary;
   @override
   _$CapabilitiesRequestR4CopyWith<_CapabilitiesRequestR4> get copyWith;
@@ -732,15 +801,25 @@ class _$_CapabilitiesRequestR5 extends _CapabilitiesRequestR5 {
         super._();
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   final Uri base;
   @JsonKey(defaultValue: Mode.full)
   @override
+
+  /// Mode can be full, normative, or terminology
   final Mode mode;
   @JsonKey(defaultValue: false)
   @override
+
+  /// Do you want the return value to be pretty printed?
   final bool pretty;
   @JsonKey(defaultValue: Summary.none)
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   final Summary summary;
 
   @override
@@ -847,12 +926,22 @@ abstract class _CapabilitiesRequestR5 extends CapabilitiesRequest {
       Summary summary}) = _$_CapabilitiesRequestR5;
 
   @override
+
+  /// the base url of the FHIR server you'd like to query, do not include
+  /// things like 'metadata'
   Uri get base;
   @override
+
+  /// Mode can be full, normative, or terminology
   Mode get mode;
   @override
+
+  /// Do you want the return value to be pretty printed?
   bool get pretty;
   @override
+
+  /// according to the FHIR spec you may request the server to return only
+  /// a portion of the resources https://www.hl7.org/fhir/search.html#summary
   Summary get summary;
   @override
   _$CapabilitiesRequestR5CopyWith<_CapabilitiesRequestR5> get copyWith;

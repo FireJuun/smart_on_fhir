@@ -6,21 +6,33 @@ part 'smart_failure.freezed.dart';
 @freezed
 abstract class SmartFailure<T> with _$SmartFailure<T> {
   const SmartFailure._();
+
+  /// if you request the Capability Statement and there is none
   const factory SmartFailure.noMetaOrWellKnown({
     FhirUri baseUrl,
   }) = _NoMetaOrWellKnown;
+
+  /// when there's no authorization endpoint in the Capability Statement
   const factory SmartFailure.noAuthorizationEndpoint({
     FhirUri baseUrl,
   }) = _NoAuthorizationEndpoint;
+
+  /// if there's no token endpoint in the Capability Statement
   const factory SmartFailure.noTokenEndpoint({
     FhirUri baseUrl,
   }) = _NoTokenEndpoint;
+
+  /// for all other failures involving the request
   const factory SmartFailure.unknownFailure({
     @required T failedValue,
   }) = _UnknownFailure<T>;
+
+  /// this is to provide the search string when running tests
   const factory SmartFailure.searchStringTest({
     String searchString,
   }) = _SearchStringTest;
+
+  /// specifics about https failures
   const factory SmartFailure.httpFailure({
     int statusCode,
     String errorType,

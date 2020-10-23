@@ -11,27 +11,60 @@ import 'package:fhir/r5.dart' as r5;
 import 'enums/enums.dart';
 import 'failures/smart_failure.dart';
 import 'request/capabilities_request.dart';
-import 'scopes/scope.dart';
+import 'scopes/scopes.dart';
 
 part 'smart.freezed.dart';
 
+/// the star of our show, who you've all come to see, the Smart object who
+/// will provide the client for interacting with the FHIR server
 @freezed
 abstract class Smart implements _$Smart {
   Smart._();
   factory Smart({
+    /// specify which FHIR version you're working with, defaults to R4
     @Default(FhirV.r4) FhirV version,
+
+    /// specify the baseUrl of the Capability Statement (or conformance
+    /// statement for Dstu2). Note this may not be the same as the authentication
+    /// server or the FHIR data server
     @required FhirUri baseUrl,
+
+    /// the clientId of your app, must be pre-registered with the authorization
+    /// server
     @required String clientId,
+
+    /// the redurectUri of your app, must be pre-registered with the authorization
+    /// server, need to follow the instructions from flutter_appauth
+    /// https://pub.dev/packages/flutter_appauth
+    /// about editing files for Android and iOS
     @required FhirUri redirectUri,
+
+    /// if there are certain launch strings that need to be included
     String launch,
-    Scope scope,
+
+    /// the scopes that will be included with the request
+    Scopes scopes,
+
+    /// this is the name of the FHIR data server where you will eventually
+    /// be reuesting actual data after authorization
     @required FhirUri fhirServer,
     Map<String, String> additionalParameters,
   }) = _Smart;
 
-  Future<Either<SmartFailure, Unit>> client() async {
+  /// the function when you're ready to request access, be sure to pass in the
+  /// the client secret when you make a request if you're creating a confidential
+  /// app
+  Future<Either<SmartFailure, AuthorizationTokenResponse>> client({
+    String secret,
+  }) async {
+    /// because each version of FHIR will return a different type of Conformance
+    /// or Capability Statement
     dynamic conformanceStatement;
+
+    /// the token endpoint found from the above statement
     FhirUri token;
+
+    /// the authorize endpoint found from the above statement
     FhirUri authorize;
     switch (version) {
       case FhirV.dstu2:
@@ -97,20 +130,20 @@ abstract class Smart implements _$Smart {
         AuthorizationTokenRequest(
           clientId,
           redirectUri.toString(),
+          clientSecret: secret,
           serviceConfiguration: AuthorizationServiceConfiguration(
               authorize.toString(), token.toString()),
-          scopes: scope.scopesList(),
+          scopes: scopes.scopesList(),
           additionalParameters: additionalParameters,
         ),
       );
     } catch (e) {
-      print(e.toString());
+      return left(SmartFailure.unknownFailure(failedValue: e));
     }
-    print(authorization.accessToken);
-
-    return right(unit);
+    return right(authorization);
   }
 
+  /// convenience method for finding either the token or authorize endpoint
   FhirUri _getUri(dynamic capabilityStatement, String type) {
     if (capabilityStatement?.rest == null) {
       return null;
@@ -131,26 +164,3 @@ abstract class Smart implements _$Smart {
     }
   }
 }
-
-// Map<String, dynamic> parseIdToken(String idToken) {
-//   final parts = idToken.split(r'.');
-//   assert(parts.length == 3);
-
-//   return jsonDecode(
-//       utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
-// }
-
-// Future<Map<String, dynamic>> getUserDetails(
-//     String accessToken, String domain) async {
-//   final url = 'https://$domain/userinfo';
-//   final response = await get(
-//     url,
-//     headers: {'Authorization': 'Bearer $accessToken'},
-//   );
-
-//   if (response.statusCode == 200) {
-//     return jsonDecode(response.body);
-//   } else {
-//     throw Exception('Failed to get user details');
-//   }
-// }

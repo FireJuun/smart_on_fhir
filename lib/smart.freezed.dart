@@ -20,7 +20,7 @@ class _$SmartTearOff {
       @required String clientId,
       @required FhirUri redirectUri,
       String launch,
-      Scope scope,
+      Scopes scopes,
       @required FhirUri fhirServer,
       Map<String, String> additionalParameters}) {
     return _Smart(
@@ -29,7 +29,7 @@ class _$SmartTearOff {
       clientId: clientId,
       redirectUri: redirectUri,
       launch: launch,
-      scope: scope,
+      scopes: scopes,
       fhirServer: fhirServer,
       additionalParameters: additionalParameters,
     );
@@ -42,12 +42,32 @@ const $Smart = _$SmartTearOff();
 
 /// @nodoc
 mixin _$Smart {
+  /// specify which FHIR version you're working with, defaults to R4
   FhirV get version;
+
+  /// specify the baseUrl of the Capability Statement (or conformance
+  /// statement for Dstu2). Note this may not be the same as the authentication
+  /// server or the FHIR data server
   FhirUri get baseUrl;
+
+  /// the clientId of your app, must be pre-registered with the authorization
+  /// server
   String get clientId;
+
+  /// the redurectUri of your app, must be pre-registered with the authorization
+  /// server, need to follow the instructions from flutter_appauth
+  /// https://pub.dev/packages/flutter_appauth
+  /// about editing files for Android and iOS
   FhirUri get redirectUri;
+
+  /// if there are certain launch strings that need to be included
   String get launch;
-  Scope get scope;
+
+  /// the scopes that will be included with the request
+  Scopes get scopes;
+
+  /// this is the name of the FHIR data server where you will eventually
+  /// be reuesting actual data after authorization
   FhirUri get fhirServer;
   Map<String, String> get additionalParameters;
 
@@ -64,11 +84,11 @@ abstract class $SmartCopyWith<$Res> {
       String clientId,
       FhirUri redirectUri,
       String launch,
-      Scope scope,
+      Scopes scopes,
       FhirUri fhirServer,
       Map<String, String> additionalParameters});
 
-  $ScopeCopyWith<$Res> get scope;
+  $ScopesCopyWith<$Res> get scopes;
 }
 
 /// @nodoc
@@ -86,7 +106,7 @@ class _$SmartCopyWithImpl<$Res> implements $SmartCopyWith<$Res> {
     Object clientId = freezed,
     Object redirectUri = freezed,
     Object launch = freezed,
-    Object scope = freezed,
+    Object scopes = freezed,
     Object fhirServer = freezed,
     Object additionalParameters = freezed,
   }) {
@@ -97,7 +117,7 @@ class _$SmartCopyWithImpl<$Res> implements $SmartCopyWith<$Res> {
       redirectUri:
           redirectUri == freezed ? _value.redirectUri : redirectUri as FhirUri,
       launch: launch == freezed ? _value.launch : launch as String,
-      scope: scope == freezed ? _value.scope : scope as Scope,
+      scopes: scopes == freezed ? _value.scopes : scopes as Scopes,
       fhirServer:
           fhirServer == freezed ? _value.fhirServer : fhirServer as FhirUri,
       additionalParameters: additionalParameters == freezed
@@ -107,12 +127,12 @@ class _$SmartCopyWithImpl<$Res> implements $SmartCopyWith<$Res> {
   }
 
   @override
-  $ScopeCopyWith<$Res> get scope {
-    if (_value.scope == null) {
+  $ScopesCopyWith<$Res> get scopes {
+    if (_value.scopes == null) {
       return null;
     }
-    return $ScopeCopyWith<$Res>(_value.scope, (value) {
-      return _then(_value.copyWith(scope: value));
+    return $ScopesCopyWith<$Res>(_value.scopes, (value) {
+      return _then(_value.copyWith(scopes: value));
     });
   }
 }
@@ -128,12 +148,12 @@ abstract class _$SmartCopyWith<$Res> implements $SmartCopyWith<$Res> {
       String clientId,
       FhirUri redirectUri,
       String launch,
-      Scope scope,
+      Scopes scopes,
       FhirUri fhirServer,
       Map<String, String> additionalParameters});
 
   @override
-  $ScopeCopyWith<$Res> get scope;
+  $ScopesCopyWith<$Res> get scopes;
 }
 
 /// @nodoc
@@ -152,7 +172,7 @@ class __$SmartCopyWithImpl<$Res> extends _$SmartCopyWithImpl<$Res>
     Object clientId = freezed,
     Object redirectUri = freezed,
     Object launch = freezed,
-    Object scope = freezed,
+    Object scopes = freezed,
     Object fhirServer = freezed,
     Object additionalParameters = freezed,
   }) {
@@ -163,7 +183,7 @@ class __$SmartCopyWithImpl<$Res> extends _$SmartCopyWithImpl<$Res>
       redirectUri:
           redirectUri == freezed ? _value.redirectUri : redirectUri as FhirUri,
       launch: launch == freezed ? _value.launch : launch as String,
-      scope: scope == freezed ? _value.scope : scope as Scope,
+      scopes: scopes == freezed ? _value.scopes : scopes as Scopes,
       fhirServer:
           fhirServer == freezed ? _value.fhirServer : fhirServer as FhirUri,
       additionalParameters: additionalParameters == freezed
@@ -181,7 +201,7 @@ class _$_Smart extends _Smart {
       @required this.clientId,
       @required this.redirectUri,
       this.launch,
-      this.scope,
+      this.scopes,
       @required this.fhirServer,
       this.additionalParameters})
       : assert(version != null),
@@ -193,25 +213,46 @@ class _$_Smart extends _Smart {
 
   @JsonKey(defaultValue: FhirV.r4)
   @override
+
+  /// specify which FHIR version you're working with, defaults to R4
   final FhirV version;
   @override
+
+  /// specify the baseUrl of the Capability Statement (or conformance
+  /// statement for Dstu2). Note this may not be the same as the authentication
+  /// server or the FHIR data server
   final FhirUri baseUrl;
   @override
+
+  /// the clientId of your app, must be pre-registered with the authorization
+  /// server
   final String clientId;
   @override
+
+  /// the redurectUri of your app, must be pre-registered with the authorization
+  /// server, need to follow the instructions from flutter_appauth
+  /// https://pub.dev/packages/flutter_appauth
+  /// about editing files for Android and iOS
   final FhirUri redirectUri;
   @override
+
+  /// if there are certain launch strings that need to be included
   final String launch;
   @override
-  final Scope scope;
+
+  /// the scopes that will be included with the request
+  final Scopes scopes;
   @override
+
+  /// this is the name of the FHIR data server where you will eventually
+  /// be reuesting actual data after authorization
   final FhirUri fhirServer;
   @override
   final Map<String, String> additionalParameters;
 
   @override
   String toString() {
-    return 'Smart(version: $version, baseUrl: $baseUrl, clientId: $clientId, redirectUri: $redirectUri, launch: $launch, scope: $scope, fhirServer: $fhirServer, additionalParameters: $additionalParameters)';
+    return 'Smart(version: $version, baseUrl: $baseUrl, clientId: $clientId, redirectUri: $redirectUri, launch: $launch, scopes: $scopes, fhirServer: $fhirServer, additionalParameters: $additionalParameters)';
   }
 
   @override
@@ -232,8 +273,8 @@ class _$_Smart extends _Smart {
                     .equals(other.redirectUri, redirectUri)) &&
             (identical(other.launch, launch) ||
                 const DeepCollectionEquality().equals(other.launch, launch)) &&
-            (identical(other.scope, scope) ||
-                const DeepCollectionEquality().equals(other.scope, scope)) &&
+            (identical(other.scopes, scopes) ||
+                const DeepCollectionEquality().equals(other.scopes, scopes)) &&
             (identical(other.fhirServer, fhirServer) ||
                 const DeepCollectionEquality()
                     .equals(other.fhirServer, fhirServer)) &&
@@ -250,7 +291,7 @@ class _$_Smart extends _Smart {
       const DeepCollectionEquality().hash(clientId) ^
       const DeepCollectionEquality().hash(redirectUri) ^
       const DeepCollectionEquality().hash(launch) ^
-      const DeepCollectionEquality().hash(scope) ^
+      const DeepCollectionEquality().hash(scopes) ^
       const DeepCollectionEquality().hash(fhirServer) ^
       const DeepCollectionEquality().hash(additionalParameters);
 
@@ -267,23 +308,44 @@ abstract class _Smart extends Smart {
       @required String clientId,
       @required FhirUri redirectUri,
       String launch,
-      Scope scope,
+      Scopes scopes,
       @required FhirUri fhirServer,
       Map<String, String> additionalParameters}) = _$_Smart;
 
   @override
+
+  /// specify which FHIR version you're working with, defaults to R4
   FhirV get version;
   @override
+
+  /// specify the baseUrl of the Capability Statement (or conformance
+  /// statement for Dstu2). Note this may not be the same as the authentication
+  /// server or the FHIR data server
   FhirUri get baseUrl;
   @override
+
+  /// the clientId of your app, must be pre-registered with the authorization
+  /// server
   String get clientId;
   @override
+
+  /// the redurectUri of your app, must be pre-registered with the authorization
+  /// server, need to follow the instructions from flutter_appauth
+  /// https://pub.dev/packages/flutter_appauth
+  /// about editing files for Android and iOS
   FhirUri get redirectUri;
   @override
+
+  /// if there are certain launch strings that need to be included
   String get launch;
   @override
-  Scope get scope;
+
+  /// the scopes that will be included with the request
+  Scopes get scopes;
   @override
+
+  /// this is the name of the FHIR data server where you will eventually
+  /// be reuesting actual data after authorization
   FhirUri get fhirServer;
   @override
   Map<String, String> get additionalParameters;

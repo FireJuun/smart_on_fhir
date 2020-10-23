@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
-part of 'scope.dart';
+part of 'scopes.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -10,12 +10,12 @@ part of 'scope.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-class _$ScopeTearOff {
-  const _$ScopeTearOff();
+class _$ScopesTearOff {
+  const _$ScopesTearOff();
 
 // ignore: unused_element
-  _Scope call(
-      {List<ClinicalScope> clinicalScope,
+  _Scopes call(
+      {List<ClinicalScope> clinicalScopes,
       bool ehrLaunch,
       bool patientLaunch,
       bool encounterLaunch,
@@ -26,8 +26,8 @@ class _$ScopeTearOff {
       bool offlineAccess,
       bool onlineAccess,
       List<String> additional}) {
-    return _Scope(
-      clinicalScope: clinicalScope,
+    return _Scopes(
+      clinicalScopes: clinicalScopes,
       ehrLaunch: ehrLaunch,
       patientLaunch: patientLaunch,
       encounterLaunch: encounterLaunch,
@@ -44,31 +44,52 @@ class _$ScopeTearOff {
 
 /// @nodoc
 // ignore: unused_element
-const $Scope = _$ScopeTearOff();
+const $Scopes = _$ScopesTearOff();
 
 /// @nodoc
-mixin _$Scope {
-  List<ClinicalScope> get clinicalScope;
+mixin _$Scopes {
+  /// see the clinical scopes class for details
+  List<ClinicalScope> get clinicalScopes;
+
+  ///if this app is going to be launched from within an EHR
   bool get ehrLaunch;
+
+  /// if the context of this app is about a specific patient
   bool get patientLaunch;
+
+  /// if the context of this app is in regards to a specific encounter
   bool get encounterLaunch;
+
+  /// does this request need a patient banner
   bool get needPatientBanner;
   String get intent;
+
+  /// permission to retrieve information about the current logged-in user
+  /// almost always coupled with fhirUser
   bool get openid;
+
+  /// permission to retrieve information about the current logged-in user
+  /// almost always coupled with openid
   bool get fhirUser;
+
+  /// will this app require offline access? specifies the kind of token that
+  /// will be returned
   bool get offlineAccess;
+
+  /// will this app require online access? specifies the kind of token that
+  /// will be returned
   bool get onlineAccess;
   List<String> get additional;
 
-  $ScopeCopyWith<Scope> get copyWith;
+  $ScopesCopyWith<Scopes> get copyWith;
 }
 
 /// @nodoc
-abstract class $ScopeCopyWith<$Res> {
-  factory $ScopeCopyWith(Scope value, $Res Function(Scope) then) =
-      _$ScopeCopyWithImpl<$Res>;
+abstract class $ScopesCopyWith<$Res> {
+  factory $ScopesCopyWith(Scopes value, $Res Function(Scopes) then) =
+      _$ScopesCopyWithImpl<$Res>;
   $Res call(
-      {List<ClinicalScope> clinicalScope,
+      {List<ClinicalScope> clinicalScopes,
       bool ehrLaunch,
       bool patientLaunch,
       bool encounterLaunch,
@@ -82,16 +103,16 @@ abstract class $ScopeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScopeCopyWithImpl<$Res> implements $ScopeCopyWith<$Res> {
-  _$ScopeCopyWithImpl(this._value, this._then);
+class _$ScopesCopyWithImpl<$Res> implements $ScopesCopyWith<$Res> {
+  _$ScopesCopyWithImpl(this._value, this._then);
 
-  final Scope _value;
+  final Scopes _value;
   // ignore: unused_field
-  final $Res Function(Scope) _then;
+  final $Res Function(Scopes) _then;
 
   @override
   $Res call({
-    Object clinicalScope = freezed,
+    Object clinicalScopes = freezed,
     Object ehrLaunch = freezed,
     Object patientLaunch = freezed,
     Object encounterLaunch = freezed,
@@ -104,9 +125,9 @@ class _$ScopeCopyWithImpl<$Res> implements $ScopeCopyWith<$Res> {
     Object additional = freezed,
   }) {
     return _then(_value.copyWith(
-      clinicalScope: clinicalScope == freezed
-          ? _value.clinicalScope
-          : clinicalScope as List<ClinicalScope>,
+      clinicalScopes: clinicalScopes == freezed
+          ? _value.clinicalScopes
+          : clinicalScopes as List<ClinicalScope>,
       ehrLaunch: ehrLaunch == freezed ? _value.ehrLaunch : ehrLaunch as bool,
       patientLaunch: patientLaunch == freezed
           ? _value.patientLaunch
@@ -133,12 +154,12 @@ class _$ScopeCopyWithImpl<$Res> implements $ScopeCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ScopeCopyWith<$Res> implements $ScopeCopyWith<$Res> {
-  factory _$ScopeCopyWith(_Scope value, $Res Function(_Scope) then) =
-      __$ScopeCopyWithImpl<$Res>;
+abstract class _$ScopesCopyWith<$Res> implements $ScopesCopyWith<$Res> {
+  factory _$ScopesCopyWith(_Scopes value, $Res Function(_Scopes) then) =
+      __$ScopesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<ClinicalScope> clinicalScope,
+      {List<ClinicalScope> clinicalScopes,
       bool ehrLaunch,
       bool patientLaunch,
       bool encounterLaunch,
@@ -152,17 +173,17 @@ abstract class _$ScopeCopyWith<$Res> implements $ScopeCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ScopeCopyWithImpl<$Res> extends _$ScopeCopyWithImpl<$Res>
-    implements _$ScopeCopyWith<$Res> {
-  __$ScopeCopyWithImpl(_Scope _value, $Res Function(_Scope) _then)
-      : super(_value, (v) => _then(v as _Scope));
+class __$ScopesCopyWithImpl<$Res> extends _$ScopesCopyWithImpl<$Res>
+    implements _$ScopesCopyWith<$Res> {
+  __$ScopesCopyWithImpl(_Scopes _value, $Res Function(_Scopes) _then)
+      : super(_value, (v) => _then(v as _Scopes));
 
   @override
-  _Scope get _value => super._value as _Scope;
+  _Scopes get _value => super._value as _Scopes;
 
   @override
   $Res call({
-    Object clinicalScope = freezed,
+    Object clinicalScopes = freezed,
     Object ehrLaunch = freezed,
     Object patientLaunch = freezed,
     Object encounterLaunch = freezed,
@@ -174,10 +195,10 @@ class __$ScopeCopyWithImpl<$Res> extends _$ScopeCopyWithImpl<$Res>
     Object onlineAccess = freezed,
     Object additional = freezed,
   }) {
-    return _then(_Scope(
-      clinicalScope: clinicalScope == freezed
-          ? _value.clinicalScope
-          : clinicalScope as List<ClinicalScope>,
+    return _then(_Scopes(
+      clinicalScopes: clinicalScopes == freezed
+          ? _value.clinicalScopes
+          : clinicalScopes as List<ClinicalScope>,
       ehrLaunch: ehrLaunch == freezed ? _value.ehrLaunch : ehrLaunch as bool,
       patientLaunch: patientLaunch == freezed
           ? _value.patientLaunch
@@ -204,9 +225,9 @@ class __$ScopeCopyWithImpl<$Res> extends _$ScopeCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Scope extends _Scope {
-  _$_Scope(
-      {this.clinicalScope,
+class _$_Scopes extends _Scopes {
+  _$_Scopes(
+      {this.clinicalScopes,
       this.ehrLaunch,
       this.patientLaunch,
       this.encounterLaunch,
@@ -220,40 +241,62 @@ class _$_Scope extends _Scope {
       : super._();
 
   @override
-  final List<ClinicalScope> clinicalScope;
+
+  /// see the clinical scopes class for details
+  final List<ClinicalScope> clinicalScopes;
   @override
+
+  ///if this app is going to be launched from within an EHR
   final bool ehrLaunch;
   @override
+
+  /// if the context of this app is about a specific patient
   final bool patientLaunch;
   @override
+
+  /// if the context of this app is in regards to a specific encounter
   final bool encounterLaunch;
   @override
+
+  /// does this request need a patient banner
   final bool needPatientBanner;
   @override
   final String intent;
   @override
+
+  /// permission to retrieve information about the current logged-in user
+  /// almost always coupled with fhirUser
   final bool openid;
   @override
+
+  /// permission to retrieve information about the current logged-in user
+  /// almost always coupled with openid
   final bool fhirUser;
   @override
+
+  /// will this app require offline access? specifies the kind of token that
+  /// will be returned
   final bool offlineAccess;
   @override
+
+  /// will this app require online access? specifies the kind of token that
+  /// will be returned
   final bool onlineAccess;
   @override
   final List<String> additional;
 
   @override
   String toString() {
-    return 'Scope(clinicalScope: $clinicalScope, ehrLaunch: $ehrLaunch, patientLaunch: $patientLaunch, encounterLaunch: $encounterLaunch, needPatientBanner: $needPatientBanner, intent: $intent, openid: $openid, fhirUser: $fhirUser, offlineAccess: $offlineAccess, onlineAccess: $onlineAccess, additional: $additional)';
+    return 'Scopes(clinicalScopes: $clinicalScopes, ehrLaunch: $ehrLaunch, patientLaunch: $patientLaunch, encounterLaunch: $encounterLaunch, needPatientBanner: $needPatientBanner, intent: $intent, openid: $openid, fhirUser: $fhirUser, offlineAccess: $offlineAccess, onlineAccess: $onlineAccess, additional: $additional)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Scope &&
-            (identical(other.clinicalScope, clinicalScope) ||
+        (other is _Scopes &&
+            (identical(other.clinicalScopes, clinicalScopes) ||
                 const DeepCollectionEquality()
-                    .equals(other.clinicalScope, clinicalScope)) &&
+                    .equals(other.clinicalScopes, clinicalScopes)) &&
             (identical(other.ehrLaunch, ehrLaunch) ||
                 const DeepCollectionEquality()
                     .equals(other.ehrLaunch, ehrLaunch)) &&
@@ -287,7 +330,7 @@ class _$_Scope extends _Scope {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(clinicalScope) ^
+      const DeepCollectionEquality().hash(clinicalScopes) ^
       const DeepCollectionEquality().hash(ehrLaunch) ^
       const DeepCollectionEquality().hash(patientLaunch) ^
       const DeepCollectionEquality().hash(encounterLaunch) ^
@@ -300,14 +343,14 @@ class _$_Scope extends _Scope {
       const DeepCollectionEquality().hash(additional);
 
   @override
-  _$ScopeCopyWith<_Scope> get copyWith =>
-      __$ScopeCopyWithImpl<_Scope>(this, _$identity);
+  _$ScopesCopyWith<_Scopes> get copyWith =>
+      __$ScopesCopyWithImpl<_Scopes>(this, _$identity);
 }
 
-abstract class _Scope extends Scope {
-  _Scope._() : super._();
-  factory _Scope(
-      {List<ClinicalScope> clinicalScope,
+abstract class _Scopes extends Scopes {
+  _Scopes._() : super._();
+  factory _Scopes(
+      {List<ClinicalScope> clinicalScopes,
       bool ehrLaunch,
       bool patientLaunch,
       bool encounterLaunch,
@@ -317,32 +360,54 @@ abstract class _Scope extends Scope {
       bool fhirUser,
       bool offlineAccess,
       bool onlineAccess,
-      List<String> additional}) = _$_Scope;
+      List<String> additional}) = _$_Scopes;
 
   @override
-  List<ClinicalScope> get clinicalScope;
+
+  /// see the clinical scopes class for details
+  List<ClinicalScope> get clinicalScopes;
   @override
+
+  ///if this app is going to be launched from within an EHR
   bool get ehrLaunch;
   @override
+
+  /// if the context of this app is about a specific patient
   bool get patientLaunch;
   @override
+
+  /// if the context of this app is in regards to a specific encounter
   bool get encounterLaunch;
   @override
+
+  /// does this request need a patient banner
   bool get needPatientBanner;
   @override
   String get intent;
   @override
+
+  /// permission to retrieve information about the current logged-in user
+  /// almost always coupled with fhirUser
   bool get openid;
   @override
+
+  /// permission to retrieve information about the current logged-in user
+  /// almost always coupled with openid
   bool get fhirUser;
   @override
+
+  /// will this app require offline access? specifies the kind of token that
+  /// will be returned
   bool get offlineAccess;
   @override
+
+  /// will this app require online access? specifies the kind of token that
+  /// will be returned
   bool get onlineAccess;
   @override
   List<String> get additional;
   @override
-  _$ScopeCopyWith<_Scope> get copyWith;
+  _$ScopesCopyWith<_Scopes> get copyWith;
 }
 
 /// @nodoc
@@ -404,7 +469,10 @@ const $ClinicalScope = _$ClinicalScopeTearOff();
 
 /// @nodoc
 mixin _$ClinicalScope {
+  /// define either patient or user
   Role get role;
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   Interaction get interaction;
 
   @optionalTypeArgs
@@ -519,10 +587,16 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
         super._();
 
   @override
+
+  /// define either patient or user
   final Role role;
   @override
+
+  /// specify the resourceType you're interested in
   final Dstu2Types type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   final Interaction interaction;
 
   @override
@@ -620,9 +694,15 @@ abstract class _Dstu2ClinicalScope extends ClinicalScope {
       @required Interaction interaction}) = _$_Dstu2ClinicalScope;
 
   @override
+
+  /// define either patient or user
   Role get role;
+
+  /// specify the resourceType you're interested in
   Dstu2Types get type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   Interaction get interaction;
   @override
   _$Dstu2ClinicalScopeCopyWith<_Dstu2ClinicalScope> get copyWith;
@@ -675,10 +755,16 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
         super._();
 
   @override
+
+  /// define either patient or user
   final Role role;
   @override
+
+  /// specify the resourceType you're interested in
   final Stu3Types type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   final Interaction interaction;
 
   @override
@@ -776,9 +862,15 @@ abstract class _Stu3ClinicalScope extends ClinicalScope {
       @required Interaction interaction}) = _$_Stu3ClinicalScope;
 
   @override
+
+  /// define either patient or user
   Role get role;
+
+  /// specify the resourceType you're interested in
   Stu3Types get type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   Interaction get interaction;
   @override
   _$Stu3ClinicalScopeCopyWith<_Stu3ClinicalScope> get copyWith;
@@ -831,10 +923,16 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
         super._();
 
   @override
+
+  /// define either patient or user
   final Role role;
   @override
+
+  /// specify the resourceType you're interested in
   final R4Types type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   final Interaction interaction;
 
   @override
@@ -932,9 +1030,15 @@ abstract class _R4ClinicalScope extends ClinicalScope {
       @required Interaction interaction}) = _$_R4ClinicalScope;
 
   @override
+
+  /// define either patient or user
   Role get role;
+
+  /// specify the resourceType you're interested in
   R4Types get type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   Interaction get interaction;
   @override
   _$R4ClinicalScopeCopyWith<_R4ClinicalScope> get copyWith;
@@ -987,10 +1091,16 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
         super._();
 
   @override
+
+  /// define either patient or user
   final Role role;
   @override
+
+  /// specify the resourceType you're interested in
   final R5Types type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   final Interaction interaction;
 
   @override
@@ -1088,9 +1198,15 @@ abstract class _R5ClinicalScope extends ClinicalScope {
       @required Interaction interaction}) = _$_R5ClinicalScope;
 
   @override
+
+  /// define either patient or user
   Role get role;
+
+  /// specify the resourceType you're interested in
   R5Types get type;
   @override
+
+  /// can be read, write, or any (symbolized by '*' in the actual request)
   Interaction get interaction;
   @override
   _$R5ClinicalScopeCopyWith<_R5ClinicalScope> get copyWith;

@@ -4,7 +4,7 @@ import 'package:smart_on_fhir/smart.dart';
 
 import 'enums/enums.dart';
 import 'resource_types/r4.dart';
-import 'scopes/scope.dart';
+import 'scopes/scopes.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,14 +43,14 @@ class HomeView extends StatelessWidget {
 }
 
 Future smarter() async {
-  const thisUrl = 'https://launch.smarthealthit.org/v/r4/sim/eyJoIjoiMSJ9/fhir';
-  // const thisUrl = 'https://dbhifhir.aidbox.app/fhir';
+  // const thisUrl = 'https://launch.smarthealthit.org/v/r4/sim/eyJoIjoiMSJ9/fhir';
+  const thisUrl = 'https://dbhifhir.aidbox.app/fhir';
   final smart = Smart(
     baseUrl: FhirUri(thisUrl),
     clientId: 'web-app',
     redirectUri: FhirUri('com.example.smartonfhir://'),
-    scope: Scope(
-      clinicalScope: [
+    scopes: Scopes(
+      clinicalScopes: [
         ClinicalScope.r4(
           role: Role.patient,
           type: R4Types.encounter,
@@ -69,5 +69,5 @@ Future smarter() async {
     },
   );
 
-  await smart.client();
+  await smart.client(secret: 'verysecret');
 }
