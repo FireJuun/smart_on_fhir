@@ -142,7 +142,14 @@ Future<Either<SmartFailure, Map<String, dynamic>>> makeRequest({
   Map<String, dynamic> returnResult;
 
   try {
-    returnResult = json.decode(result.body);
+    /// because I can't figure out why aidbox only has strings not lists for
+    /// the referencePolicy field
+    if (thisRequest.contains('aidbox')) {
+      returnResult = json.decode(result.body.replaceAll(
+          '"referencePolicy":"local"', '"referencePolicy":["local"]'));
+    } else {
+      returnResult = json.decode(result.body);
+    }
   } catch (e) {
     return left(SmartFailure.unknownFailure(
       failedValue: result.body,

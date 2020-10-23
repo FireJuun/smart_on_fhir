@@ -38,42 +38,46 @@ abstract class Scope implements _$Scope {
   factory Scope.identity({bool openid, bool fhirUser}) = _IdentityScope;
   factory Scope.refreshToken({bool offlineAccess, bool onlineAccess}) =
       _RefreshTokenScope;
+  factory Scope.additionalScopes({List<String> additional}) = AdditionalScopes;
 
   @override
   String toString() => map(
-      clinicalDstu2: (m) => _clinical(m),
-      clinicalStu3: (m) => _clinical(m),
-      clinicalR4: (m) => _clinical(m),
-      clinicalR5: (m) => _clinical(m),
-      context: (m) {
-        String returnValue = '';
+        clinicalDstu2: (m) => _clinical(m),
+        clinicalStu3: (m) => _clinical(m),
+        clinicalR4: (m) => _clinical(m),
+        clinicalR5: (m) => _clinical(m),
+        context: (m) {
+          String returnValue = '';
 
-        returnValue += m.ehrLaunch ?? false ? 'launch' : '';
+          returnValue += m.ehrLaunch ?? false ? 'launch' : '';
 
-        returnValue += m.patientLaunch != null
-            ? '${returnValue == "" ? "" : " "}launch/patient'
-            : '';
+          returnValue += m.patientLaunch != null
+              ? '${returnValue == "" ? "" : " "}launch/patient'
+              : '';
 
-        returnValue += m.encounterLaunch != null
-            ? '${returnValue == "" ? "" : " "}launch/encounter'
-            : '';
+          returnValue += m.encounterLaunch != null
+              ? '${returnValue == "" ? "" : " "}launch/encounter'
+              : '';
 
-        returnValue += m.needPatientBanner != null
-            ? '${returnValue == "" ? "" : " "}need_patient_banner=${m.needPatientBanner}'
-            : '';
+          returnValue += m.needPatientBanner != null
+              ? '${returnValue == "" ? "" : " "}need_patient_banner=${m.needPatientBanner}'
+              : '';
 
-        returnValue += m.intent != null
-            ? '${returnValue == "" ? "" : " "}intent=${m.intent}'
-            : '';
+          returnValue += m.intent != null
+              ? '${returnValue == "" ? "" : " "}intent=${m.intent}'
+              : '';
 
-        return returnValue == '' ? null : returnValue;
-      },
-      identity: (m) => '${m.openid ?? false ? "openid" : ""}'
-          '${(m.openid ?? false) && (m.fhirUser ?? false) ? " " : ""}'
-          '${m.fhirUser ?? false ? "fhirUser" : ""}',
-      refreshToken: (m) => '${m.offlineAccess ?? false ? "offline_access" : ""}'
-          '${(m.offlineAccess ?? false) && (m.onlineAccess ?? false) ? " " : ""}'
-          '${m.onlineAccess ?? false ? "online_access" : ""}');
+          return returnValue == '' ? null : returnValue;
+        },
+        identity: (m) => '${m.openid ?? false ? "openid" : ""}'
+            '${(m.openid ?? false) && (m.fhirUser ?? false) ? " " : ""}'
+            '${m.fhirUser ?? false ? "fhirUser" : ""}',
+        refreshToken: (m) =>
+            '${m.offlineAccess ?? false ? "offline_access" : ""}'
+            '${(m.offlineAccess ?? false) && (m.onlineAccess ?? false) ? " " : ""}'
+            '${m.onlineAccess ?? false ? "online_access" : ""}',
+        additionalScopes: (m) => m.toString(),
+      );
 
   String _clinical(dynamic scope) =>
       '${scope.role == Role.patient ? "patient" : "user"}/${enumToString(scope.type)}.'

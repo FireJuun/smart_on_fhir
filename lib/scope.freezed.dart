@@ -92,6 +92,13 @@ class _$ScopeTearOff {
       onlineAccess: onlineAccess,
     );
   }
+
+// ignore: unused_element
+  AdditionalScopes additionalScopes({List<String> additional}) {
+    return AdditionalScopes(
+      additional: additional,
+    );
+  }
 }
 
 /// @nodoc
@@ -116,6 +123,7 @@ mixin _$Scope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -127,6 +135,7 @@ mixin _$Scope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -138,6 +147,7 @@ mixin _$Scope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -148,6 +158,7 @@ mixin _$Scope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   });
 }
@@ -258,6 +269,7 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -266,6 +278,7 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalDstu2(role, type, interaction);
   }
 
@@ -280,6 +293,7 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -299,6 +313,7 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -307,6 +322,7 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalDstu2(this);
   }
 
@@ -320,6 +336,7 @@ class _$_Dstu2ClinicalScope extends _Dstu2ClinicalScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -434,6 +451,7 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -442,6 +460,7 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalStu3(role, type, interaction);
   }
 
@@ -456,6 +475,7 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -475,6 +495,7 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -483,6 +504,7 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalStu3(this);
   }
 
@@ -496,6 +518,7 @@ class _$_Stu3ClinicalScope extends _Stu3ClinicalScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -610,6 +633,7 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -618,6 +642,7 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalR4(role, type, interaction);
   }
 
@@ -632,6 +657,7 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -651,6 +677,7 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -659,6 +686,7 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalR4(this);
   }
 
@@ -672,6 +700,7 @@ class _$_R4ClinicalScope extends _R4ClinicalScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -786,6 +815,7 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -794,6 +824,7 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalR5(role, type, interaction);
   }
 
@@ -808,6 +839,7 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -827,6 +859,7 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -835,6 +868,7 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return clinicalR5(this);
   }
 
@@ -848,6 +882,7 @@ class _$_R5ClinicalScope extends _R5ClinicalScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -989,6 +1024,7 @@ class _$_ContextScope extends _ContextScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -997,6 +1033,7 @@ class _$_ContextScope extends _ContextScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return context(
         ehrLaunch, patientLaunch, encounterLaunch, needPatientBanner, intent);
   }
@@ -1012,6 +1049,7 @@ class _$_ContextScope extends _ContextScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1032,6 +1070,7 @@ class _$_ContextScope extends _ContextScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -1040,6 +1079,7 @@ class _$_ContextScope extends _ContextScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return context(this);
   }
 
@@ -1053,6 +1093,7 @@ class _$_ContextScope extends _ContextScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1157,6 +1198,7 @@ class _$_IdentityScope extends _IdentityScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -1165,6 +1207,7 @@ class _$_IdentityScope extends _IdentityScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return identity(openid, fhirUser);
   }
 
@@ -1179,6 +1222,7 @@ class _$_IdentityScope extends _IdentityScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1198,6 +1242,7 @@ class _$_IdentityScope extends _IdentityScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -1206,6 +1251,7 @@ class _$_IdentityScope extends _IdentityScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return identity(this);
   }
 
@@ -1219,6 +1265,7 @@ class _$_IdentityScope extends _IdentityScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1319,6 +1366,7 @@ class _$_RefreshTokenScope extends _RefreshTokenScope {
             bool needPatientBanner, String intent),
     @required Result identity(bool openid, bool fhirUser),
     @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -1327,6 +1375,7 @@ class _$_RefreshTokenScope extends _RefreshTokenScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return refreshToken(offlineAccess, onlineAccess);
   }
 
@@ -1341,6 +1390,7 @@ class _$_RefreshTokenScope extends _RefreshTokenScope {
         bool needPatientBanner, String intent),
     Result identity(bool openid, bool fhirUser),
     Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1360,6 +1410,7 @@ class _$_RefreshTokenScope extends _RefreshTokenScope {
     @required Result context(_ContextScope value),
     @required Result identity(_IdentityScope value),
     @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
   }) {
     assert(clinicalDstu2 != null);
     assert(clinicalStu3 != null);
@@ -1368,6 +1419,7 @@ class _$_RefreshTokenScope extends _RefreshTokenScope {
     assert(context != null);
     assert(identity != null);
     assert(refreshToken != null);
+    assert(additionalScopes != null);
     return refreshToken(this);
   }
 
@@ -1381,6 +1433,7 @@ class _$_RefreshTokenScope extends _RefreshTokenScope {
     Result context(_ContextScope value),
     Result identity(_IdentityScope value),
     Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1399,4 +1452,161 @@ abstract class _RefreshTokenScope extends Scope {
   bool get offlineAccess;
   bool get onlineAccess;
   _$RefreshTokenScopeCopyWith<_RefreshTokenScope> get copyWith;
+}
+
+/// @nodoc
+abstract class $AdditionalScopesCopyWith<$Res> {
+  factory $AdditionalScopesCopyWith(
+          AdditionalScopes value, $Res Function(AdditionalScopes) then) =
+      _$AdditionalScopesCopyWithImpl<$Res>;
+  $Res call({List<String> additional});
+}
+
+/// @nodoc
+class _$AdditionalScopesCopyWithImpl<$Res> extends _$ScopeCopyWithImpl<$Res>
+    implements $AdditionalScopesCopyWith<$Res> {
+  _$AdditionalScopesCopyWithImpl(
+      AdditionalScopes _value, $Res Function(AdditionalScopes) _then)
+      : super(_value, (v) => _then(v as AdditionalScopes));
+
+  @override
+  AdditionalScopes get _value => super._value as AdditionalScopes;
+
+  @override
+  $Res call({
+    Object additional = freezed,
+  }) {
+    return _then(AdditionalScopes(
+      additional: additional == freezed
+          ? _value.additional
+          : additional as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$AdditionalScopes extends AdditionalScopes {
+  _$AdditionalScopes({this.additional}) : super._();
+
+  @override
+  final List<String> additional;
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AdditionalScopes &&
+            (identical(other.additional, additional) ||
+                const DeepCollectionEquality()
+                    .equals(other.additional, additional)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(additional);
+
+  @override
+  $AdditionalScopesCopyWith<AdditionalScopes> get copyWith =>
+      _$AdditionalScopesCopyWithImpl<AdditionalScopes>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required
+        Result clinicalDstu2(
+            Role role, Dstu2Types type, Interaction interaction),
+    @required
+        Result clinicalStu3(Role role, Stu3Types type, Interaction interaction),
+    @required
+        Result clinicalR4(Role role, R4Types type, Interaction interaction),
+    @required
+        Result clinicalR5(Role role, R5Types type, Interaction interaction),
+    @required
+        Result context(bool ehrLaunch, bool patientLaunch, bool encounterLaunch,
+            bool needPatientBanner, String intent),
+    @required Result identity(bool openid, bool fhirUser),
+    @required Result refreshToken(bool offlineAccess, bool onlineAccess),
+    @required Result additionalScopes(List<String> additional),
+  }) {
+    assert(clinicalDstu2 != null);
+    assert(clinicalStu3 != null);
+    assert(clinicalR4 != null);
+    assert(clinicalR5 != null);
+    assert(context != null);
+    assert(identity != null);
+    assert(refreshToken != null);
+    assert(additionalScopes != null);
+    return additionalScopes(additional);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result clinicalDstu2(Role role, Dstu2Types type, Interaction interaction),
+    Result clinicalStu3(Role role, Stu3Types type, Interaction interaction),
+    Result clinicalR4(Role role, R4Types type, Interaction interaction),
+    Result clinicalR5(Role role, R5Types type, Interaction interaction),
+    Result context(bool ehrLaunch, bool patientLaunch, bool encounterLaunch,
+        bool needPatientBanner, String intent),
+    Result identity(bool openid, bool fhirUser),
+    Result refreshToken(bool offlineAccess, bool onlineAccess),
+    Result additionalScopes(List<String> additional),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (additionalScopes != null) {
+      return additionalScopes(additional);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result clinicalDstu2(_Dstu2ClinicalScope value),
+    @required Result clinicalStu3(_Stu3ClinicalScope value),
+    @required Result clinicalR4(_R4ClinicalScope value),
+    @required Result clinicalR5(_R5ClinicalScope value),
+    @required Result context(_ContextScope value),
+    @required Result identity(_IdentityScope value),
+    @required Result refreshToken(_RefreshTokenScope value),
+    @required Result additionalScopes(AdditionalScopes value),
+  }) {
+    assert(clinicalDstu2 != null);
+    assert(clinicalStu3 != null);
+    assert(clinicalR4 != null);
+    assert(clinicalR5 != null);
+    assert(context != null);
+    assert(identity != null);
+    assert(refreshToken != null);
+    assert(additionalScopes != null);
+    return additionalScopes(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result clinicalDstu2(_Dstu2ClinicalScope value),
+    Result clinicalStu3(_Stu3ClinicalScope value),
+    Result clinicalR4(_R4ClinicalScope value),
+    Result clinicalR5(_R5ClinicalScope value),
+    Result context(_ContextScope value),
+    Result identity(_IdentityScope value),
+    Result refreshToken(_RefreshTokenScope value),
+    Result additionalScopes(AdditionalScopes value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (additionalScopes != null) {
+      return additionalScopes(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AdditionalScopes extends Scope {
+  AdditionalScopes._() : super._();
+  factory AdditionalScopes({List<String> additional}) = _$AdditionalScopes;
+
+  List<String> get additional;
+  $AdditionalScopesCopyWith<AdditionalScopes> get copyWith;
 }

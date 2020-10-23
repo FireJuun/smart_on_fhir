@@ -21,7 +21,8 @@ class _$SmartTearOff {
       @required FhirUri redirectUri,
       String launch,
       List<Scope> scope,
-      @required FhirUri fhirServer}) {
+      @required FhirUri fhirServer,
+      Map<String, String> additionalParameters}) {
     return _Smart(
       version: version,
       baseUrl: baseUrl,
@@ -30,6 +31,7 @@ class _$SmartTearOff {
       launch: launch,
       scope: scope,
       fhirServer: fhirServer,
+      additionalParameters: additionalParameters,
     );
   }
 }
@@ -47,6 +49,7 @@ mixin _$Smart {
   String get launch;
   List<Scope> get scope;
   FhirUri get fhirServer;
+  Map<String, String> get additionalParameters;
 
   $SmartCopyWith<Smart> get copyWith;
 }
@@ -62,7 +65,8 @@ abstract class $SmartCopyWith<$Res> {
       FhirUri redirectUri,
       String launch,
       List<Scope> scope,
-      FhirUri fhirServer});
+      FhirUri fhirServer,
+      Map<String, String> additionalParameters});
 }
 
 /// @nodoc
@@ -82,6 +86,7 @@ class _$SmartCopyWithImpl<$Res> implements $SmartCopyWith<$Res> {
     Object launch = freezed,
     Object scope = freezed,
     Object fhirServer = freezed,
+    Object additionalParameters = freezed,
   }) {
     return _then(_value.copyWith(
       version: version == freezed ? _value.version : version as FhirV,
@@ -93,6 +98,9 @@ class _$SmartCopyWithImpl<$Res> implements $SmartCopyWith<$Res> {
       scope: scope == freezed ? _value.scope : scope as List<Scope>,
       fhirServer:
           fhirServer == freezed ? _value.fhirServer : fhirServer as FhirUri,
+      additionalParameters: additionalParameters == freezed
+          ? _value.additionalParameters
+          : additionalParameters as Map<String, String>,
     ));
   }
 }
@@ -109,7 +117,8 @@ abstract class _$SmartCopyWith<$Res> implements $SmartCopyWith<$Res> {
       FhirUri redirectUri,
       String launch,
       List<Scope> scope,
-      FhirUri fhirServer});
+      FhirUri fhirServer,
+      Map<String, String> additionalParameters});
 }
 
 /// @nodoc
@@ -130,6 +139,7 @@ class __$SmartCopyWithImpl<$Res> extends _$SmartCopyWithImpl<$Res>
     Object launch = freezed,
     Object scope = freezed,
     Object fhirServer = freezed,
+    Object additionalParameters = freezed,
   }) {
     return _then(_Smart(
       version: version == freezed ? _value.version : version as FhirV,
@@ -141,6 +151,9 @@ class __$SmartCopyWithImpl<$Res> extends _$SmartCopyWithImpl<$Res>
       scope: scope == freezed ? _value.scope : scope as List<Scope>,
       fhirServer:
           fhirServer == freezed ? _value.fhirServer : fhirServer as FhirUri,
+      additionalParameters: additionalParameters == freezed
+          ? _value.additionalParameters
+          : additionalParameters as Map<String, String>,
     ));
   }
 }
@@ -154,7 +167,8 @@ class _$_Smart extends _Smart {
       @required this.redirectUri,
       this.launch,
       this.scope,
-      @required this.fhirServer})
+      @required this.fhirServer,
+      this.additionalParameters})
       : assert(version != null),
         assert(baseUrl != null),
         assert(clientId != null),
@@ -177,10 +191,12 @@ class _$_Smart extends _Smart {
   final List<Scope> scope;
   @override
   final FhirUri fhirServer;
+  @override
+  final Map<String, String> additionalParameters;
 
   @override
   String toString() {
-    return 'Smart(version: $version, baseUrl: $baseUrl, clientId: $clientId, redirectUri: $redirectUri, launch: $launch, scope: $scope, fhirServer: $fhirServer)';
+    return 'Smart(version: $version, baseUrl: $baseUrl, clientId: $clientId, redirectUri: $redirectUri, launch: $launch, scope: $scope, fhirServer: $fhirServer, additionalParameters: $additionalParameters)';
   }
 
   @override
@@ -205,7 +221,10 @@ class _$_Smart extends _Smart {
                 const DeepCollectionEquality().equals(other.scope, scope)) &&
             (identical(other.fhirServer, fhirServer) ||
                 const DeepCollectionEquality()
-                    .equals(other.fhirServer, fhirServer)));
+                    .equals(other.fhirServer, fhirServer)) &&
+            (identical(other.additionalParameters, additionalParameters) ||
+                const DeepCollectionEquality()
+                    .equals(other.additionalParameters, additionalParameters)));
   }
 
   @override
@@ -217,7 +236,8 @@ class _$_Smart extends _Smart {
       const DeepCollectionEquality().hash(redirectUri) ^
       const DeepCollectionEquality().hash(launch) ^
       const DeepCollectionEquality().hash(scope) ^
-      const DeepCollectionEquality().hash(fhirServer);
+      const DeepCollectionEquality().hash(fhirServer) ^
+      const DeepCollectionEquality().hash(additionalParameters);
 
   @override
   _$SmartCopyWith<_Smart> get copyWith =>
@@ -233,7 +253,8 @@ abstract class _Smart extends Smart {
       @required FhirUri redirectUri,
       String launch,
       List<Scope> scope,
-      @required FhirUri fhirServer}) = _$_Smart;
+      @required FhirUri fhirServer,
+      Map<String, String> additionalParameters}) = _$_Smart;
 
   @override
   FhirV get version;
@@ -249,6 +270,8 @@ abstract class _Smart extends Smart {
   List<Scope> get scope;
   @override
   FhirUri get fhirServer;
+  @override
+  Map<String, String> get additionalParameters;
   @override
   _$SmartCopyWith<_Smart> get copyWith;
 }
