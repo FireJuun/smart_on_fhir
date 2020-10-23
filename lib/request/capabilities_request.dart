@@ -7,7 +7,7 @@ import 'package:fhir/r4.dart' as r4;
 import 'package:fhir/r5.dart' as r5;
 
 import '../enums/enums.dart';
-import '../smart_failure.dart';
+import '../failures/smart_failure.dart';
 import 'make_request.dart';
 
 part 'capabilities_request.freezed.dart';

@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:http/http.dart';
 
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:fhir/dstu2.dart' as dstu2;
@@ -12,9 +9,9 @@ import 'package:fhir/r4.dart' as r4;
 import 'package:fhir/r5.dart' as r5;
 
 import 'enums/enums.dart';
+import 'failures/smart_failure.dart';
 import 'request/capabilities_request.dart';
 import 'scope.dart';
-import 'smart_failure.dart';
 
 part 'smart.freezed.dart';
 
@@ -109,6 +106,9 @@ abstract class Smart implements _$Smart {
     } catch (e) {
       print(e.toString());
     }
+    print(authorization.accessToken);
+
+    return right(unit);
   }
 
   List<String> _getScopes() {

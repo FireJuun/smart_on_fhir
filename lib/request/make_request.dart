@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
 
-import '../smart_failure.dart';
+import '../failures/smart_failure.dart';
 
 Future<Either<SmartFailure, Map<String, dynamic>>> makeRequest({
   @required RestfulRequest type,
