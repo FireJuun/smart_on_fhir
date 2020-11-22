@@ -71,56 +71,63 @@ class Smart {
   /// app
   Future<Either<SmartFailure, AuthorizationTokenResponse>> client({
     String secret,
+    String authUrl,
+    String tokenUrl,
   }) async {
     /// because each version of FHIR will return a different type of Conformance
     /// or Capability Statement
     dynamic conformanceStatement;
-    switch (version) {
-      case FhirV.dstu2:
-        {
-          conformanceStatement =
-              await CapabilitiesRequest.dstu2(base: Uri.parse('$baseUrl'))
-                  .request();
-          conformanceStatement.fold((l) => null, (r) {
-            token = _getUri(r as dstu2.Conformance, 'token');
-            authorize = _getUri(r as dstu2.Conformance, 'authorize');
-          });
-        }
-        break;
-      case FhirV.stu3:
-        {
-          conformanceStatement =
-              await CapabilitiesRequest.stu3(base: Uri.parse('$baseUrl'))
-                  .request();
-          conformanceStatement.fold((l) => null, (r) {
-            token = _getUri(r as stu3.CapabilityStatement, 'token');
-            authorize = _getUri(r as stu3.CapabilityStatement, 'authorize');
-          });
-        }
-        break;
-      case FhirV.r4:
-        {
-          conformanceStatement =
-              await CapabilitiesRequest.r4(base: Uri.parse('$baseUrl'))
-                  .request();
-          conformanceStatement.fold((l) => null, (r) {
-            token = _getUri(r as r4.CapabilityStatement, 'token');
-            authorize = _getUri(r as r4.CapabilityStatement, 'authorize');
-          });
-        }
-        break;
-      case FhirV.r5:
-        {
-          conformanceStatement =
-              await CapabilitiesRequest.r5(base: Uri.parse('$baseUrl'))
-                  .request();
-          conformanceStatement.fold((l) => null, (r) {
-            token = _getUri(r as r5.CapabilityStatement, 'token');
-            authorize = _getUri(r as r5.CapabilityStatement, 'authorize');
-          });
-        }
-        break;
+    if (authUrl != null && tokenUrl != null) {
+      switch (version) {
+        case FhirV.dstu2:
+          {
+            conformanceStatement =
+                await CapabilitiesRequest.dstu2(base: Uri.parse('$baseUrl'))
+                    .request();
+            conformanceStatement.fold((l) => null, (r) {
+              token = _getUri(r as dstu2.Conformance, 'token');
+              authorize = _getUri(r as dstu2.Conformance, 'authorize');
+            });
+          }
+          break;
+        case FhirV.stu3:
+          {
+            conformanceStatement =
+                await CapabilitiesRequest.stu3(base: Uri.parse('$baseUrl'))
+                    .request();
+            conformanceStatement.fold((l) => null, (r) {
+              token = _getUri(r as stu3.CapabilityStatement, 'token');
+              authorize = _getUri(r as stu3.CapabilityStatement, 'authorize');
+            });
+          }
+          break;
+        case FhirV.r4:
+          {
+            conformanceStatement =
+                await CapabilitiesRequest.r4(base: Uri.parse('$baseUrl'))
+                    .request();
+            conformanceStatement.fold((l) => null, (r) {
+              token = _getUri(r as r4.CapabilityStatement, 'token');
+              authorize = _getUri(r as r4.CapabilityStatement, 'authorize');
+            });
+          }
+          break;
+        case FhirV.r5:
+          {
+            conformanceStatement =
+                await CapabilitiesRequest.r5(base: Uri.parse('$baseUrl'))
+                    .request();
+            conformanceStatement.fold((l) => null, (r) {
+              token = _getUri(r as r5.CapabilityStatement, 'token');
+              authorize = _getUri(r as r5.CapabilityStatement, 'authorize');
+            });
+          }
+          break;
+      }
     }
+
+    authorize = authUrl == null ? authorize : FhirUri(authUrl);
+    token = tokenUrl == null ? token : FhirUri(tokenUrl);
 
     if (authorize == null) {
       return left(SmartFailure.noAuthorizationEndpoint(baseUrl: baseUrl));
