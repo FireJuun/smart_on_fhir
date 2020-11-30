@@ -77,8 +77,12 @@ class Smart {
     /// because each version of FHIR will return a different type of Conformance
     /// or Capability Statement
     dynamic conformanceStatement;
-    if (authUrl != null && tokenUrl != null) {
+    if (authUrl == null || tokenUrl == null) {
       switch (version) {
+
+        /// each case requests that particular version's capabilities or
+        /// conformance statement, then searches for the token and authorize
+        /// endpoint in it
         case FhirV.dstu2:
           {
             conformanceStatement =
@@ -126,9 +130,12 @@ class Smart {
       }
     }
 
+    /// check if authUrl or tokenUrl are passed as parameters, if they are, we
+    /// preferentially use these, otherise, se use the endpoints found above
     authorize = authUrl == null ? authorize : FhirUri(authUrl);
     token = tokenUrl == null ? token : FhirUri(tokenUrl);
 
+    /// if either authorize or token are still null, we return a failure
     if (authorize == null) {
       return left(SmartFailure.noAuthorizationEndpoint(baseUrl: baseUrl));
     }
@@ -138,23 +145,33 @@ class Smart {
 
     final appAuth = FlutterAppAuth();
     AuthorizationTokenResponse authorization;
-
     print('trying authorization');
+
+    /// since we don't know what will happen
     try {
-      authorization = await appAuth.authorizeAndExchangeCode(
-        AuthorizationTokenRequest(
-          clientId,
-          redirectUri.toString(),
-          clientSecret: secret,
-          serviceConfiguration: AuthorizationServiceConfiguration(
-              authorize.toString(), token.toString()),
-          scopes: scopes.scopesList(),
-          additionalParameters: additionalParameters,
-        ),
+      /// this request simply includes all of the parameters we have to this
+      /// point. The clientId, the redirect Url, the client secret, the
+      /// authorize and token enpoints, a list of scopes, and if there are any
+      /// other additional parameters are passed, they are included
+      final request = AuthorizationTokenRequest(
+        clientId,
+        redirectUri.toString(),
+        clientSecret: secret,
+        serviceConfiguration: AuthorizationServiceConfiguration(
+            authorize.toString(), token.toString()),
+        scopes: scopes.scopesList(),
       );
+      if (additionalParameters != null) {
+        request.additionalParameters = additionalParameters;
+      }
+
+      /// call the authorizeAndExchangeCode method
+      authorization = await appAuth.authorizeAndExchangeCode(request);
     } catch (e) {
       return left(SmartFailure.unknownFailure(failedValue: e));
     }
+
+    /// return the result
     return right(authorization);
   }
 

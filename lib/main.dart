@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_on_fhir/smart.dart';
+import 'package:smart_on_fhir/smarter.dart';
 
 import 'enums/enums.dart';
 import 'resource_types/r4.dart';
@@ -30,7 +31,8 @@ class HomeView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 48.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               RaisedButton(
                 child: const Text('Press me!'),

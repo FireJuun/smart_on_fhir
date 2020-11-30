@@ -56,10 +56,10 @@ abstract class ClinicalScope implements _$ClinicalScope {
   @override
   String toString() => '${role == Role.patient ? "patient" : "user"}'
       '${map(
-        dstu2: (m) => "/${enumToString(m.type)}",
-        stu3: (m) => "/${enumToString(m.type)}",
-        r4: (m) => "/${enumToString(m.type)}",
-        r5: (m) => "/${enumToString(m.type)}",
+        dstu2: (m) => "/${enumToString(m.type)}.",
+        stu3: (m) => "/${enumToString(m.type)}.",
+        r4: (m) => "/${enumToString(m.type)}.",
+        r5: (m) => "/${enumToString(m.type)}.",
       )}'
       '${interaction == Interaction.any ? "*" : simpleEnumToString(interaction)}';
 }

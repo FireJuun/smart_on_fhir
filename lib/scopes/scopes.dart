@@ -51,10 +51,14 @@ abstract class Scopes implements _$Scopes {
   /// checks if each item is null or false, and includes it appropriately
   List<String> scopesList() {
     List<String> returnValue = [];
-    if (clinicalScopes != null) {
-      for (var scope in clinicalScopes) {
-        returnValue.add(scope.toString());
-      }
+    if (openid ?? false) {
+      returnValue.add('openId');
+    }
+    if (onlineAccess ?? false) {
+      returnValue.add('online_access');
+    }
+    if (offlineAccess ?? false) {
+      returnValue.add('offline_access');
     }
     if (ehrLaunch ?? false) {
       returnValue.add('launch');
@@ -65,21 +69,19 @@ abstract class Scopes implements _$Scopes {
     if (encounterLaunch ?? false) {
       returnValue.add('launch/encounter');
     }
+    if (clinicalScopes != null) {
+      for (var scope in clinicalScopes) {
+        returnValue.add(scope.toString());
+      }
+    }
+
     if (needPatientBanner != null) {
       returnValue.add('need_patient_banner=$needPatientBanner');
     }
     if (intent != null) {
       returnValue.add('intent=$intent');
     }
-    if (openid ?? false) {
-      returnValue.add('openId');
-    }
-    if (onlineAccess ?? false) {
-      returnValue.add('online_access');
-    }
-    if (offlineAccess ?? false) {
-      returnValue.add('offline_access');
-    }
+
     if (additional != null) {
       additional.forEach(returnValue.add);
     }

@@ -96,6 +96,7 @@ abstract class CapabilitiesRequest with _$CapabilitiesRequest {
         '&_format=application/fhir+json'
         '${pretty ? "&_pretty=$pretty" : ""}'
         '${summary != Summary.none ? "&_summary=${enumToString(summary)}" : ""}';
+    print(thisRequest);
 
     final result = await makeRequest(
       type: RestfulRequest.get_,
