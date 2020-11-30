@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:http/http.dart';
 import 'enums/enums.dart';
-import 'request/capabilities_request.dart';
 import 'resource_types/resource_types.dart';
 import 'scopes/scopes.dart';
 import 'smart.dart';
@@ -53,37 +55,6 @@ import 'smart.dart';
 Future smarter() async {
   final appAuth = FlutterAppAuth();
   AuthorizationTokenResponse authorization;
-  // var conformanceStatement = await CapabilitiesRequest.r4(
-  //         base: Uri.parse('https://prapare.aidbox.app/fhir'))
-  //     .request();
-  // conformanceStatement.fold((l) => null, (r) {
-  //   print(r.toJson());
-  //   // token = _getUri(r as r4.CapabilityStatement, 'token');
-  //   // authorize = _getUri(r as r4.CapabilityStatement, 'authorize');
-  // });
-
-  // print('trying authorization');
-  // try {
-  //   final req = AuthorizationTokenRequest(
-  //       'prapare', 'com.example.smartonfhir://',
-  //       clientSecret: 'verysecret',
-  //       serviceConfiguration: AuthorizationServiceConfiguration(
-  //           'https://prapare.aidbox.app/auth/authorize',
-  //           'https://prapare.aidbox.app/auth/token'),
-  //       scopes: [
-  //         'openid',
-  //         'offline_access',
-  //         'launch/patient',
-  //         'launch/encounter',
-  //         'user/Patient.*',
-  //         'user/Questionnaire.*',
-  //         'user/QuestionnaireResponse.*',
-  //       ]);
-  //   authorization = await appAuth.authorizeAndExchangeCode(req);
-  // } catch (e) {
-  //   print(e);
-  // }
-  // print(authorization?.accessToken);
   const thisUrl = 'https://prapare.aidbox.app/fhir';
   const fhirServerUrl = 'https://prapare.aidbox.app/fhir';
   const clientId = 'prapare';
@@ -117,13 +88,19 @@ Future smarter() async {
     fhirServer: FhirUri(fhirServerUrl),
   );
 
-  var auth = await smart.client(secret: 'verysecret');
+  final auth = await smart.client(secret: 'verysecret');
+  var token;
   auth.fold(
     (l) => print(l.errorMessage()),
     (r) {
       print(r?.accessToken);
       print(r?.idToken);
       print(r?.refreshToken);
+      token = r.accessToken;
     },
   );
+
+  var ans = await get('https://prapare.aidbox.app/fhir/Patient',
+      headers: {HttpHeaders.authorizationHeader: 'Bearer $token'});
+  print(ans.body);
 }

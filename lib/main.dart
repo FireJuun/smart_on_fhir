@@ -1,13 +1,5 @@
-import 'dart:io';
-
-import 'package:fhir/primitive_types/primitive_types.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_on_fhir/smart.dart';
 import 'package:smart_on_fhir/smarter.dart';
-
-import 'enums/enums.dart';
-import 'resource_types/r4.dart';
-import 'scopes/scopes.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
