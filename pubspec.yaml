@@ -16,7 +16,11 @@ dependencies:
   dartz: ^0.9.1
   http: ^0.12.2
   flutter_appauth: ^0.9.2+6
-  fhir: ^0.0.9
+  # fhir: ^0.0.9
+  fhir: 
+    git:
+      url: https://github.com/FireJuun/fhir.git
+      ref: enable_when_operators 
   flutter_secure_storage: ^3.3.5
 
 dev_dependencies:
